@@ -18,11 +18,17 @@ using Kashmir.Captain.Infrastructure.Services;
 using Kashmir.Captain.Application.Identity;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Application.Behaviors;
+using ODL.Application.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var env = builder.Environment;
+var logger = LoggerFactory.Create(logging =>
+{
+    logging.AddConsole();
+}).CreateLogger("StartupLogger");
 
+builder.Services.AddApplication(configuration, env, logger);
 
 // Configure database context
 builder.Services.AddDbContext<KcDbContext>(options =>
@@ -54,31 +60,6 @@ builder.Services.AddAuthorization(options =>
         options.AddPolicy(nameof(RoleType.SuperAdmin), policy => policy.RequireRole(nameof(RoleType.SuperAdmin)));
 
     });
-
-// Configure authentication
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-// })
-// .AddJwtBearer(options =>
-// {
-//     options.TokenValidationParameters = new TokenValidationParameters
-//     {
-//         ValidateIssuer = true,
-//         ValidateAudience = true,
-//         ValidateLifetime = true,
-//         ValidateIssuerSigningKey = true,
-//         ValidIssuer = configuration["Jwt:Issuer"],
-//         ValidAudience = configuration["Jwt:Audience"],
-//         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
-//     };
-// })
-// .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-// {
-//     // Configure cookie options if needed
-//     options.Cookie.Name = "KcCookies";
-// });
 
 // Add authorization policies if needed
 builder.Services.AddAuthorization();
@@ -175,6 +156,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+app.UseApplication(env, builder.Services, true);
 
 using (var scope = app.Services.CreateScope())
 {

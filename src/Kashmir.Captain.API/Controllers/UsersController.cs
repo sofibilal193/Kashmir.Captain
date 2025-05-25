@@ -32,7 +32,6 @@ namespace Kashmir.Captain.Controllers
         /// <param name="search"></param>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAllUserAsync(int page, int pageSize, string? sort, string? search)
         {
             var response = await Mediator.Send(new GetUsersQuery(page, pageSize, sort, search));
