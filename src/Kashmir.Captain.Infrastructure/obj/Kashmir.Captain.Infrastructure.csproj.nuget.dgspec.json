@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {}
+    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
+        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
         "projectName": "Kashmir.Captain.Domain",
-        "projectPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
+        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\obj\\",
+        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
+    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
+        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
         "projectName": "Kashmir.Captain.Infrastructure",
-        "projectPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
+        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\obj\\",
+        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
-                "projectPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
+              "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+                "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
               }
             }
           }
@@ -128,6 +128,8 @@
               "version": "[9.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.5, )"
             }

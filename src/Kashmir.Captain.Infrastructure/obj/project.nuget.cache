@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I5t67Ef30TM=",
+  "dgSpecHash": "3ZLif2buT7o=",
   "success": true,
-  "projectFilePath": "C:\\projects\\kc\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
+  "projectFilePath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofib\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\sofib\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\kc\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
+      "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
       "projectName": "Kashmir.Captain.Application",
-      "projectPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
+      "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
       "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Application\\obj\\",
+      "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -58,8 +58,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
-              "projectPath": "C:\\projects\\kc\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
+            "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+              "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
             }
           }
         }
