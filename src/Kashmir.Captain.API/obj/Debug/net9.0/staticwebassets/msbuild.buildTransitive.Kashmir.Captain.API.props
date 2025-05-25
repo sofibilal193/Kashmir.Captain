@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Kashmir.Captain.API.props" />
-</Project>

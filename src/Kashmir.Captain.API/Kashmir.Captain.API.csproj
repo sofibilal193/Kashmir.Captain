@@ -9,6 +9,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
     <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="NSwag.Annotations" Version="14.4.0" />
+    <PackageReference Include="SonarAnalyzer.CSharpX" Version="6.6.0.3969" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>

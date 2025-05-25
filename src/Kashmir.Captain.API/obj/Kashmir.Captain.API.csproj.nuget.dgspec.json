@@ -64,6 +64,18 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.5, )"
+            },
+            "NSwag.Annotations": {
+              "target": "Package",
+              "version": "[14.4.0, )"
+            },
+            "SonarAnalyzer.CSharpX": {
+              "target": "Package",
+              "version": "[6.6.0.3969, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
             }
           },
           "imports": [

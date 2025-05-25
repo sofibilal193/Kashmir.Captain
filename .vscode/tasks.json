@@ -1,41 +1,78 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/Kashmir.Captain.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/Kashmir.Captain.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/Kashmir.Captain.sln"
-            ],
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Kashmir.Captain.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/Kashmir.Captain.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/Kashmir.Captain.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "EF Create Migration - KcDbContext",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "ef",
+        "migrations",
+        "add",
+        "${input:EFMigrationName}",
+        "--context",
+        "KcDbContext",
+        "--output-dir",
+        "Migrations"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "EF Update Database - KcDbContext",
+      "options": {
+        "cwd": "${workspaceFolder}/Kashmir.Captain.Server"
+      },
+      "type": "shell",
+      "command": "dotnet",
+      "args": ["ef", "database", "update", "--context", "KcDbContext"],
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "EFMigrationName",
+      "type": "promptString",
+      "description": "Enter the migration name",
+      "default": "NewMigration"
+    }
+  ]
 }
