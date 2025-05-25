@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj": {}
+    "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj": {}
   },
   "projects": {
-    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj": {
+    "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj",
+        "projectUniqueName": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj",
         "projectName": "Kashmir.Captain.API",
-        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj",
+        "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\Kashmir.Captain.API.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\obj\\",
+        "outputPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj": {
-                "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj"
+              "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj": {
+                "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj"
               },
-              "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
-                "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj"
+              "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
+                "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj"
               }
             }
           }
@@ -57,6 +57,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.5, )"
@@ -85,14 +89,14 @@
         }
       }
     },
-    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj": {
+    "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
+        "projectUniqueName": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
         "projectName": "Kashmir.Captain.Application",
-        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
+        "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\obj\\",
+        "outputPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -113,8 +117,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
-                "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
+              "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+                "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
               }
             }
           }
@@ -134,6 +138,28 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Automapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.2, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.4.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -154,14 +180,14 @@
         }
       }
     },
-    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+    "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
+        "projectUniqueName": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
         "projectName": "Kashmir.Captain.Domain",
-        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
+        "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\obj\\",
+        "outputPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -199,6 +225,32 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.SpaProxy": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -219,14 +271,14 @@
         }
       }
     },
-    "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
+    "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
+        "projectUniqueName": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
         "projectName": "Kashmir.Captain.Infrastructure",
-        "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
+        "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\Kashmir.Captain.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\sofib\\.nuget\\packages\\",
-        "outputPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\obj\\",
+        "outputPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -247,8 +299,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
-                "projectPath": "c:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
+              "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj": {
+                "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Application\\Kashmir.Captain.Application.csproj"
+              },
+              "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj": {
+                "projectPath": "C:\\projects\\Kashmir.Captain\\src\\Kashmir.Captain.Domain\\Kashmir.Captain.Domain.csproj"
               }
             }
           }

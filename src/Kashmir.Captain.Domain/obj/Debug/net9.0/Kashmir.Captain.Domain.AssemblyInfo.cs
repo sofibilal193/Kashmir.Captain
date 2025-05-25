@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kashmir.Captain.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e84e3533442ba4645cd78e227d461b556281f4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+165611a5d6b970bf4819695ae1b577d857ec91e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kashmir.Captain.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kashmir.Captain.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

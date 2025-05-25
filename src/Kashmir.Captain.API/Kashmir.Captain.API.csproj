@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Kashmir.Captain.Application\Kashmir.Captain.Application.csproj" />
-    <ProjectReference Include="..\Kashmir.Captain.Infrastructure\Kashmir.Captain.Infrastructure.csproj" />
+    <ProjectReference
+      Include="..\Kashmir.Captain.Infrastructure\Kashmir.Captain.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

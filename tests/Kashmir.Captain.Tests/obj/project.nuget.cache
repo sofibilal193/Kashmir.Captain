@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0J9gABNr434=",
+  "dgSpecHash": "sAM0+kQWk4U=",
   "success": true,
-  "projectFilePath": "c:\\projects\\Kashmir.Captain\\tests\\Kashmir.Captain.Tests\\Kashmir.Captain.Tests.csproj",
+  "projectFilePath": "C:\\projects\\Kashmir.Captain\\tests\\Kashmir.Captain.Tests\\Kashmir.Captain.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sofib\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\sofib\\.nuget\\packages\\microsoft.codecoverage\\17.12.0\\microsoft.codecoverage.17.12.0.nupkg.sha512",

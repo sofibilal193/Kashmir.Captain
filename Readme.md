@@ -17,6 +17,17 @@ Kashmir.Captain.sln
 └── tests/
 └── Kashmir.Captain.Tests --> Unit & Integration Tests
 
+Kashmir.Captain.sln
+│
+├── src/
+│ ├── Kashmir.Captain.API → Web API (Controllers, Middleware, Swagger)
+│ ├── Kashmir.Captain.Application → Application layer (DTOs, Interfaces, CQRS, Validators)
+│ ├── Kashmir.Captain.Domain → Domain layer (Entities, Enums, ValueObjects)
+│ └── Kashmir.Captain.Infrastructure → Infrastructure (EF Core, Repos, External Services)
+│
+└── tests/
+└── Kashmir.Captain.Tests → Unit/Integration tests
+
 ---
 
 ## 🚀 Getting Started
@@ -64,3 +75,33 @@ dotnet new xunit -n Kashmir.Captain.Tests
 6. Run the API
    cd Kashmir.Captain.API
    dotnet run
+
+# Data
+
+Value Objects, Enums and domain logic also go inside Kashmir.Captain.Domain.
+
+Application Layer (Kashmir.Captain.Application) contains:
+
+DTOs (Data Transfer Objects)
+
+Service interfaces and implementations
+
+Application business logic, commands, queries, MediatR handlers
+
+Infrastructure Layer (Kashmir.Captain.Infrastructure) contains:
+
+EF Core DbContext and configurations (Fluent API)
+
+Repository implementations
+
+External service integrations (file storage, email, etc.)
+
+API Layer (Kashmir.Captain.API) contains:
+
+Controllers
+
+API-specific concerns (middlewares, filters)
+
+Swagger/OpenAPI config
+
+Tests project will reference Domain, Application, and Infrastructure as needed to test business logic and API endpoints.
