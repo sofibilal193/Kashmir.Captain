@@ -1,0 +1,42 @@
+Step-by-Step Commands
+Run these from a terminal (e.g., PowerShell) in your root project folder.
+
+1. Create Solution
+bash
+Copy
+Edit
+dotnet new sln -n Kashmir.Captain
+2. Create Projects
+bash
+Copy
+Edit
+# Create API project
+dotnet new webapi -n Kashmir.Captain.API
+
+# Create Class Libraries
+dotnet new classlib -n Kashmir.Captain.Application
+dotnet new classlib -n Kashmir.Captain.Domain
+dotnet new classlib -n Kashmir.Captain.Infrastructure
+
+# Optional: Create Test Project
+dotnet new xunit -n Kashmir.Captain.Tests
+3. Add Projects to Solution
+bash
+Copy
+Edit
+dotnet sln Kashmir.Captain.sln add ./Kashmir.Captain.API/Kashmir.Captain.API.csproj
+dotnet sln Kashmir.Captain.sln add ./Kashmir.Captain.Application/Kashmir.Captain.Application.csproj
+dotnet sln Kashmir.Captain.sln add ./Kashmir.Captain.Domain/Kashmir.Captain.Domain.csproj
+dotnet sln Kashmir.Captain.sln add ./Kashmir.Captain.Infrastructure/Kashmir.Captain.Infrastructure.csproj
+dotnet sln Kashmir.Captain.sln add ./Kashmir.Captain.Tests/Kashmir.Captain.Tests.csproj
+4. Add Project References
+Ensure proper reference flow (API → Application → Infrastructure/Domain)
+
+bash
+Copy
+Edit
+dotnet add Kashmir.Captain.API reference Kashmir.Captain.Application
+dotnet add Kashmir.Captain.API reference Kashmir.Captain.Infrastructure
+
+dotnet add Kashmir.Captain.Application reference Kashmir.Captain.Domain
+dotnet add Kashmir.Captain.Infrastructure reference Kashmir.Captain.Domain

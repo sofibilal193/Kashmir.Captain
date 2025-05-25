@@ -1,0 +1,6 @@
+@Kashmir.Captain.API_HostAddress = http://localhost:5197
+
+GET {{Kashmir.Captain.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Kashmir.Captain.Domain/1.0.0": {
+        "runtime": {
+          "Kashmir.Captain.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Kashmir.Captain.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
