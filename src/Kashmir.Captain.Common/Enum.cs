@@ -1,4 +1,4 @@
-namespace Kashmir.Captain.Domain.Entities
+namespace Kashmir.Captain.Common.Entities
 {
 	public enum RoleType
 	{

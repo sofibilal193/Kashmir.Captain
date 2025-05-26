@@ -6,7 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 

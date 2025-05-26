@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Kashmir.Captain.Application.Extensions
+namespace Kashmir.Captain.Common.Extensions
 {
     public static class GenericTypeExtensions
     {

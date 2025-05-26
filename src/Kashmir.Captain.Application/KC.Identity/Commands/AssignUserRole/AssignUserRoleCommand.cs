@@ -1,7 +1,5 @@
-using Kashmir.Captain.Domain.Entities;
-using KC.Domain.Entities;
+using Kashmir.Captain.Common.Entities;
 using MediatR;
-using System.Text.Json.Serialization;
 
 namespace Kashmir.Captain.Application.Identity
 {

@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 
-namespace Kashmir.Captain.Application.Extensions
+namespace Kashmir.Captain.Common.Extensions
 {
 	/// <summary>
 	/// Extension methods for <see cref="IQueryable">IQueryable</see> and <see cref="IOrderedQueryable">IOrderedQueryable</see>.

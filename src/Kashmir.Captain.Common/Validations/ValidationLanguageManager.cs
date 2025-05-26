@@ -4,7 +4,7 @@ using System.Reflection;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Kashmir.Captain.Application.Validations
+namespace Kashmir.Captain.Common.Validations
 {
     public static class ValidationCodes
     {

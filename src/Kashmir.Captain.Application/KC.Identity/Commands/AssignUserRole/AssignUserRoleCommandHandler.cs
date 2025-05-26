@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using MediatR;
 using Kashmir.Captain.Domain.Entities;
 using Microsoft.AspNetCore.Http;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
+using Kashmir.Captain.Common.Entities;
 
 namespace Kashmir.Captain.Application.Identity
 {

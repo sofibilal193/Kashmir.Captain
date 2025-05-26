@@ -1,10 +1,11 @@
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Application.Services;
-using Kashmir.Captain.Application.Validations;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Kashmir.Captain.Common.Entities;
+using Kashmir.Captain.Common.Validations;
 
 namespace Kashmir.Captain.Application.Identity
 {

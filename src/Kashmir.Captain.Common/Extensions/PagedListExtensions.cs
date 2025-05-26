@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Kashmir.Captain.Application.Extensions
+namespace Kashmir.Captain.Common.Extensions
 {
     public static class PagedListExtensions
     {

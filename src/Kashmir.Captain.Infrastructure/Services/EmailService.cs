@@ -1,6 +1,7 @@
 using Kashmir.Captain.Application;
 using Kashmir.Captain.Application.Services;
 using Microsoft.Extensions.Options;
+using ODL.Application.Common;
 using System.Net.Mail;
 
 namespace Kashmir.Captain.Infrastructure.Services

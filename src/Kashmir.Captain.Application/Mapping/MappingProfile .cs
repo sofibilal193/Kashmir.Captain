@@ -1,6 +1,6 @@
 
 using AutoMapper;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Application.Identity;
 using Kashmir.Captain.Domain.Entities;
 

@@ -1,4 +1,4 @@
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
 
 namespace Kashmir.Captain.Application.Identity

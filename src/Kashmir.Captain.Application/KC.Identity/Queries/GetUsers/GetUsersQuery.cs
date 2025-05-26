@@ -1,4 +1,4 @@
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using MediatR;
 
 namespace Kashmir.Captain.Application.Identity

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Kashmir.Captain.Application.Validations
+namespace Kashmir.Captain.Common.Validations
 {
     public class ApiValidationProblemDetails : ValidationProblemDetails
     {

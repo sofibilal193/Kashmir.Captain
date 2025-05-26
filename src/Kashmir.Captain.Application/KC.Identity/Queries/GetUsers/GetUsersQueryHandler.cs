@@ -1,5 +1,5 @@
 using AutoMapper;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
 using KC.Domain.Entities;
 using MediatR;

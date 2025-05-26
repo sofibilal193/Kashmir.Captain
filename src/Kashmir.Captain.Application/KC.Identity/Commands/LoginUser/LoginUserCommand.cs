@@ -1,6 +1,6 @@
 using FluentValidation;
 using MediatR;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 
 namespace Kashmir.Captain.Application.Identity
 {

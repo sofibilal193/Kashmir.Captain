@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Kashmir.Captain.Domain.Entities;
+using Kashmir.Captain.Common.Entities;
 
-namespace Kashmir.Captain.Domain
+namespace Kashmir.Captain.Common
 {
 	public static class GlobalConstants
 	{

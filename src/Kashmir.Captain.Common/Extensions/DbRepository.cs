@@ -2,7 +2,7 @@
 // using KC.Common.Persistance;
 // using Microsoft.EntityFrameworkCore;
 
-// namespace Kashmir.Captain.Application.Extensions
+// namespace Kashmir.Captain.Common.Extensions
 // {
 // 	/// <summary>
 // 	/// Base repository for managing entity models configured with DbContext.

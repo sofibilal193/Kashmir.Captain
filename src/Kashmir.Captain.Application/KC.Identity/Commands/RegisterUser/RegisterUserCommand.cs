@@ -1,5 +1,5 @@
 using FluentValidation;
-using Kashmir.Captain.Application.Extensions;
+using Kashmir.Captain.Common.Extensions;
 using MediatR;
 using System.Text.Json.Serialization;
 

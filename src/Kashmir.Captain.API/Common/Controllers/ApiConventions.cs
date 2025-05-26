@@ -1,5 +1,5 @@
 // https://docs.microsoft.com/en-us/aspnet/core/web-api/advanced/conventions?view=aspnetcore-6.0#create-web-api-conventions
-using Kashmir.Captain.Application.Validations;
+using Kashmir.Captain.Common.Validations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 

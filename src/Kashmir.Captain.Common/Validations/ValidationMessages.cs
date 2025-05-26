@@ -1,6 +1,5 @@
-using Kashmir.Captain.Domain;
 
-namespace Kashmir.Captain.Application.Validations
+namespace Kashmir.Captain.Common.Validations
 {
     public static class ValidationMessages
     {
