@@ -1,3 +1,6 @@
+using Kashmir.Captain.Application;
+using Kashmir.Captain.Domain;
+
 namespace ODL.Application.Common
 {
     public record AppSettings
@@ -5,6 +8,7 @@ namespace ODL.Application.Common
         public LoggingSettings Logging { get; init; } = new();
         public ConnectionStringsSettings ConnectionStrings { get; init; } = new();
         public JwtSettings Jwt { get; init; } = new();
+        public EmailSettings EmailSettings { get; init; } = new();
     }
 
     public record LoggingSettings

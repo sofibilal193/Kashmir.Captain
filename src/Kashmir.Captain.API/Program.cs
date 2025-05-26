@@ -19,6 +19,7 @@ using Kashmir.Captain.Application.Identity;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Application.Behaviors;
 using ODL.Application.Common;
+using Kashmir.Captain.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -36,7 +37,7 @@ builder.Services.AddApplication(configuration, env, logger);
 
 // Configure database context
 builder.Services.AddDbContext<KcDbContext>(options =>
-    options.UseSqlServer(configuration.GetConnectionString(appSettings.ConnectionStrings.KcDbContext)
+    options.UseSqlServer(appSettings.ConnectionStrings.KcDbContext
     ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found.")));
 
 // Configure Identity

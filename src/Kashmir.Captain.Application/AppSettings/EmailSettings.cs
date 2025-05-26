@@ -1,4 +1,4 @@
-namespace Kashmir.Captain.Domain
+namespace Kashmir.Captain.Application
 {
     public class EmailSettings
     {

@@ -1,5 +1,5 @@
+using Kashmir.Captain.Application;
 using Kashmir.Captain.Application.Services;
-using Kashmir.Captain.Domain;
 using Microsoft.Extensions.Options;
 using System.Net.Mail;
 
