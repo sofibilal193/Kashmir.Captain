@@ -23,16 +23,20 @@ using ODL.Application.Common;
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 var env = builder.Environment;
+
 var logger = LoggerFactory.Create(logging =>
 {
     logging.AddConsole();
 }).CreateLogger("StartupLogger");
 
+var appSettings = new AppSettings();
+builder.Configuration.Bind(appSettings);
+
 builder.Services.AddApplication(configuration, env, logger);
 
 // Configure database context
 builder.Services.AddDbContext<KcDbContext>(options =>
-    options.UseSqlServer(configuration.GetConnectionString("KcDbContext")
+    options.UseSqlServer(configuration.GetConnectionString(appSettings.ConnectionStrings.KcDbContext)
     ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found.")));
 
 // Configure Identity
