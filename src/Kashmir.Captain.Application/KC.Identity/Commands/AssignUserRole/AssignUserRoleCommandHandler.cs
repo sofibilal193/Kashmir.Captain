@@ -1,7 +1,6 @@
-using KC.Infrastructure.Persistance.Entities;
+using KC.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using MediatR;
-using KC.Infrastructure.Persistance;
 using Kashmir.Captain.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Kashmir.Captain.Application.Extensions;

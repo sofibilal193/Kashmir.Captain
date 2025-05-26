@@ -1,8 +1,8 @@
 using Kashmir.Captain.Application.Extensions;
 using Kashmir.Captain.Application.Services;
+using Kashmir.Captain.Application.Validations;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Domain.Entities;
-using KC.Infrastructure.Persistance.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
@@ -23,8 +23,7 @@ namespace Kashmir.Captain.Application.Identity
 
 		public async Task<ApiResponse<string>> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
 		{
-			byte[] imageBytes = Convert.FromBase64String(request.ProfilePhoto);
-			var user = new User(request.Email, request.FirstName, request.LastName, request.PhoneNumber, imageBytes);
+			var user = new User(request.Email, request.FirstName, request.LastName, request.PhoneNumber);
 
 			var createdResult = await _userManager.CreateAsync(user, request.Password);
 			if (createdResult.Succeeded)
@@ -33,27 +32,33 @@ namespace Kashmir.Captain.Application.Identity
 				if (addRoleResult.Succeeded)
 				{
 					var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-					var confirmEmailLink = _urlHelperService.GenerateUrl("ConfirmEmail", "Account", new { token, userId = user.Id });
 
-					var mail = new EmailTemplate()
-					{
-						To = user.Email!,
-						Subject = $"Confirm Email Kashmir Captain",
-					};
-					mail.GetEmailRegistrationBody(user.FirstName, user.LastName, confirmEmailLink);
+					await SendEmail(user, token);
 
-					await _emailService.SendEmailAsync(mail);
-
-					return new ApiResponse<string>(true, "User registered successfully. Please check your email to confirm your account.");
+					return new ApiResponse<string>(true, ValidationMessages.User_Registered_Success);
 				}
 				else // RollBack
 				{
 					await _userManager.DeleteAsync(user);
-					return new ApiResponse<string>(false, addRoleResult.Errors.First().ToString());
+					return new ApiResponse<string>(false, addRoleResult.Errors.First().Description.ToString());
 
 				}
 			}
-			return new ApiResponse<string>(false, createdResult.Errors.First().ToString());
+			return new ApiResponse<string>(false, createdResult.Errors.First().Description.ToString());
+		}
+
+		private async Task SendEmail(User user, string token)
+		{
+			var confirmEmailLink = _urlHelperService.GenerateUrl("ConfirmEmail", "Account", new { token, userId = user.Id });
+
+			var mail = new EmailTemplate()
+			{
+				To = user.Email!,
+				Subject = ValidationMessages.Confirm_Email_Address,
+			};
+			mail.GetEmailRegistrationBody(user.FirstName, user.LastName, confirmEmailLink);
+
+			await _emailService.SendEmailAsync(mail);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 using System.Reflection.PortableExecutable;
 using Kashmir.Captain.Domain.Entities;
-using KC.Infrastructure.Persistance.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Machine = Kashmir.Captain.Domain.Entities.Machine;

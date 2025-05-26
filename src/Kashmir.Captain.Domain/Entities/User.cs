@@ -10,26 +10,23 @@ namespace Kashmir.Captain.Domain.Entities
 		public string? FirstName { get; set; }
 		public string? LastName { get; set; }
 		public override string? PhoneNumber { get; set; }
-		public byte[] ProfilePhoto { get; set; } = [];
 
 		public User() { }
 
-		public User(string email, string? firstName, string? lastName, string? phoneNumber, byte[] profilePhoto)
+		public User(string email, string? firstName, string? lastName, string? phoneNumber)
 		{
 			UserName = email;
 			Email = email;
 			FirstName = firstName;
 			LastName = lastName;
 			PhoneNumber = phoneNumber;
-			ProfilePhoto = profilePhoto;
 		}
 
-		public void Update(string? firstName, string? lastName, string? phoneNumber, byte[] profilePhoto)
+		public void Update(string? firstName, string? lastName, string? phoneNumber)
 		{
 			FirstName = firstName;
 			LastName = lastName;
 			PhoneNumber = phoneNumber;
-			ProfilePhoto = profilePhoto;
 		}
 	}
 }

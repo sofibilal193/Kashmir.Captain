@@ -5,7 +5,7 @@ using Kashmir.Captain.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Kashmir.Captain.Domain;
 
-namespace KC.Infrastructure.Persistance.Entities
+namespace KC.Domain.Entities
 {
 	public class KcDbContext : IdentityDbContext<User, Role, int>
 	{
@@ -29,8 +29,7 @@ namespace KC.Infrastructure.Persistance.Entities
 
 			builder.Entity<User>(entity =>
 			{
-				entity.ToTable("Users", schema: _IdSchema)
-				.Property(u => u.ProfilePhoto).HasColumnType("varbinary(MAX)");
+				entity.ToTable("Users", schema: _IdSchema);
 			});
 			builder.Entity<Role>(entity => entity.ToTable(name: "Roles", schema: _IdSchema));
 			builder.Entity<IdentityUserRole<int>>(entity =>

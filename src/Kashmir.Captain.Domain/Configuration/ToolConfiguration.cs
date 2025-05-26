@@ -1,5 +1,4 @@
 using Kashmir.Captain.Domain.Entities;
-using KC.Infrastructure.Persistance.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

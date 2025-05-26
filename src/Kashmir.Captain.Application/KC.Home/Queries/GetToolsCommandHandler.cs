@@ -1,8 +1,7 @@
-using KC.Infrastructure.Persistance;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using KC.Infrastructure.Persistance.Entities;
+using KC.Domain.Entities;
 using Kashmir.Captain.Application.Identity;
 
 namespace Kashmir.Captain.Application.Home

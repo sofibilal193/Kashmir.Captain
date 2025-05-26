@@ -40,7 +40,7 @@
     {
       "label": "EF Create Migration - KcDbContext",
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/src/Kashmir.Captain.Domain"
       },
       "type": "shell",
       "command": "dotnet",
@@ -52,14 +52,14 @@
         "--context",
         "KcDbContext",
         "--output-dir",
-        "Migrations"
+        "${workspaceFolder}/src/Kashmir.Captain.Domain/Migrations"
       ],
       "problemMatcher": []
     },
     {
       "label": "EF Update Database - KcDbContext",
       "options": {
-        "cwd": "${workspaceFolder}/Kashmir.Captain.Server"
+        "cwd": "${workspaceFolder}/Kashmir.Captain.Domain"
       },
       "type": "shell",
       "command": "dotnet",

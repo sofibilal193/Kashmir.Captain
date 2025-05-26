@@ -1,4 +1,4 @@
-using KC.Infrastructure.Persistance.Entities;
+using KC.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;

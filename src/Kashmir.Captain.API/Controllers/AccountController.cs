@@ -1,12 +1,12 @@
 using Kashmir.Captain.API.Common;
 using Kashmir.Captain.Application.Identity;
 using Kashmir.Captain.Domain.Entities;
-using KC.Infrastructure.Persistance.Entities;
+using KC.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Kashmir.Captain.Controllers
+namespace Kashmir.Captain.API.Controllers
 {
 	[Route("api/Account")]
 	public class AccountController : BaseController

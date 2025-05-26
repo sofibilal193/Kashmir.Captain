@@ -26,7 +26,6 @@ namespace Kashmir.Captain.Application.Identity
 				Email = user.Email,
 				PhoneNumber = user.PhoneNumber,
 				Role = roles,
-				ProfilePhoto = Convert.ToBase64String(user.ProfilePhoto)
 			};
 
 			return UserDto;

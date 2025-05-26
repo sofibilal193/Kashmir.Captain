@@ -1,7 +1,7 @@
 using AutoMapper;
 using Kashmir.Captain.Application.Extensions;
 using Kashmir.Captain.Domain.Entities;
-using KC.Infrastructure.Persistance.Entities;
+using KC.Domain.Entities;
 using MediatR;
 
 namespace Kashmir.Captain.Application.Identity
