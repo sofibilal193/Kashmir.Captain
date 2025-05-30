@@ -1,7 +1,11 @@
 using System.Net;
 using System.Text.Json;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace Kashmir.Captain.API
+namespace Kashmir.Captain.Common
 {
     public class ExceptionMiddleware
     {

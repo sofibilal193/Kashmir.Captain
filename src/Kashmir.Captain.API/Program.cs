@@ -1,4 +1,5 @@
-using Kashmir.Captain.API;
+using Kashmir.Captain.Application;
+using Kashmir.Captain.Common;
 using KC.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 

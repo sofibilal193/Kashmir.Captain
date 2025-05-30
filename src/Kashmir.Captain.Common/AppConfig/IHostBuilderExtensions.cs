@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Azure.Identity;
-using System.Collections.Generic;
 
-namespace Kashmir.Captain.API
+namespace Kashmir.Captain.Common
 {
     [ExcludeFromCodeCoverage]
     public static class IHostBuilderExtensions
