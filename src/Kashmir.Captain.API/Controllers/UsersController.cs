@@ -17,7 +17,6 @@ namespace Kashmir.Captain.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpGet("{userId}")]
-        [Authorize(Policy = nameof(RoleType.User))]
         public async Task<IActionResult> GetUserAsync(int userId)
         {
             var response = await Mediator.Send(new GetUserQuery(userId));

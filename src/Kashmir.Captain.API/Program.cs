@@ -68,12 +68,12 @@ public class Program
 
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy("AllowAll", policy =>
-            {
-                policy.AllowAnyOrigin()
-                      .AllowAnyHeader()
-                      .AllowAnyMethod();
-            });
+            options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
         });
 
         builder.Services.AddControllers();
@@ -159,9 +159,9 @@ public class Program
             await next();
         });
 
+        app.UseCors("AllowFrontend");
         app.UseHttpsRedirection();
         app.UseRouting();
-        app.UseCors("AllowAll");
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

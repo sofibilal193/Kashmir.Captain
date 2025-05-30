@@ -19,7 +19,6 @@ namespace Kashmir.Captain.Controllers
 		/// <param name="AssignRole"> True: Add-Role, False: Delete-Role</param>
 		/// <returns></returns>
 		[HttpPost("Upsertrole")]
-        [Authorize(Policy = nameof(RoleType.SuperAdmin))]
         public async Task<IActionResult> UpsertRoleAsync(int userId, RoleType role, bool AssignRole)
         {
             var response = await Mediator.Send(new UpsertRoleCommand(userId, role, AssignRole));
@@ -32,7 +31,6 @@ namespace Kashmir.Captain.Controllers
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		[HttpDelete("Deleterole")]
-        [Authorize(Policy = nameof(RoleType.SuperAdmin))]
         public async Task<IActionResult> DeleteRoleAsync(int userId)
         {
             var response = await Mediator.Send(new DeleteUserRoleCommand(userId));

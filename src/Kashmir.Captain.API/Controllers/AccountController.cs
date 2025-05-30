@@ -32,7 +32,6 @@ namespace Kashmir.Captain.API.Controllers
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[HttpPost("ChangePassword")]
-		[Authorize(Policy = nameof(RoleType.User))]
 		public async Task<IActionResult> ChangePasswordAsync(int userId, ChangeUserPasswordCommand command)
 		{
 			command.setId(userId);
@@ -99,7 +98,6 @@ namespace Kashmir.Captain.API.Controllers
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[HttpPost("UpdateProfile")]
-		[Authorize(Policy = nameof(RoleType.User))]
 		public async Task<IActionResult> UpdateProfileAsync(int userId, [FromBody] UpdateUserProfileCommand command)
 		{
 			command.setId(userId);
@@ -114,7 +112,6 @@ namespace Kashmir.Captain.API.Controllers
 		/// <param name="command"></param>
 		/// <returns></returns>
 		[HttpPost("ChangeEmail")]
-		[Authorize(Policy = nameof(RoleType.User))]
 		public async Task<IActionResult> ChangeEmailAsync(int userId, ChangeUserEmailCommand command)
 		{
 			command.setId(userId);
@@ -128,7 +125,6 @@ namespace Kashmir.Captain.API.Controllers
 		/// <param name="userId"></param>
 		/// <returns></returns>
 		[HttpDelete("DeleteUser")]
-		[Authorize(Policy = nameof(RoleType.SuperAdmin))]
 		public async Task<IActionResult> DeleteUserAsync(int userId)
 		{
 			var command = new DeleteUserCommand();

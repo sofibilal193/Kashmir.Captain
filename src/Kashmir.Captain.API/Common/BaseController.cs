@@ -1,3 +1,4 @@
+using Kashmir.Captain.Common.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -7,8 +8,8 @@ using Microsoft.Extensions.Options;
 namespace Kashmir.Captain.API.Common
 {
     [ApiController]
-    [Authorize]
-    [EnableCors]
+    [Authorize(Policy = nameof(RoleType.User))]
+    [EnableCors("AllowFrontend")]
     [ApiConventionType(typeof(ApiConventions))]
     public abstract class BaseController : ControllerBase
     {
