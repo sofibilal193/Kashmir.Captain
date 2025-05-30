@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using ODL.Application.Common;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +61,7 @@ namespace ODL.Mono.API
             var userManager = services.GetRequiredService<UserManager<User>>();
 
             string superAdminRoleName = RoleType.SuperAdmin.ToString();
-            string superAdminEmail = "superadmin@example.com";
+            string superAdminEmail = "test@test.com";
             string superAdminPassword = "Password@123";
 
             if (!await roleManager.RoleExistsAsync(superAdminRoleName))

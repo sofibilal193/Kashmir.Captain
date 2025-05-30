@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using ODL.Application.Common;
 
 namespace Kashmir.Captain.API.Common
 {
@@ -40,10 +41,6 @@ namespace Kashmir.Captain.API.Common
     }
 
     public interface ICurrentUser
-    {
-    }
-
-    public class AppSettings
     {
     }
 }

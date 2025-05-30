@@ -5,12 +5,19 @@ namespace ODL.Application.Common
 {
     public record AppSettings
     {
+        public SuperAdminCredentials SuperAdminCredentials { get; init; } = new();
         public LoggingSettings Logging { get; init; } = new();
         public ConnectionStringsSettings ConnectionStrings { get; init; } = new();
         public JwtSettings Jwt { get; init; } = new();
         public EmailSettings EmailSettings { get; init; } = new();
     }
 
+    public record SuperAdminCredentials
+    {
+        public string Role { get; init; } = "";
+        public string Email { get; init; } = "";
+        public string Password { get; init; } = "";
+    }
     public record LoggingSettings
     {
         public LogLevelSettings LogLevel { get; init; } = new();
