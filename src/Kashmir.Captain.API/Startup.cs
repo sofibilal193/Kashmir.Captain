@@ -24,8 +24,6 @@ using Kashmir.Captain.API;
 using Kashmir.Captain.Common.Entities;
 using Kashmir.Captain.Common;
 
-using ODL.Application.Common;
-
 namespace ODL.Mono.API
 {
     public class Startup
@@ -59,7 +57,9 @@ namespace ODL.Mono.API
 
             services.AddDbContext<KcDbContext>(options =>
                 options.UseSqlServer(appSettings.ConnectionStrings.KcDbContext
-                ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found.")));
+                ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found."),
+
+                sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain")));
 
             services.AddIdentity<User, Role>(options =>
             {
