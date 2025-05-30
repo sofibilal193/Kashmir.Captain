@@ -38,45 +38,6 @@ namespace ODL.Application.Common
 
             services.AddHttpContextAccessor();
 
-            // Configure authentication
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["Jwt:Issuer"],
-                    ValidAudience = configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
-                };
-            })
-            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
-            {
-                // Configure cookie options if needed
-                options.Cookie.Name = "KcCookies";
-            });
-
-
-            // services
-            //     .AddControllers(options => options.Filters.Add(typeof(HttpGlobalExceptionFilter)))
-            //     .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true)
-            //     .AddJsonOptions(options =>
-            //     {
-            //         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            //         options.JsonSerializerOptions.Converters.Add(new TrimStringJsonConverter());
-            //     });
-
-            // services.AddScoped<ICurrentUser, HttpCurrentUser>();
-
-            // https://andrewlock.net/handling-web-api-exceptions-with-problemdetails-middleware/
-
             // add Mediatr
             services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(LoggingBehavior<,>).Assembly));
 
