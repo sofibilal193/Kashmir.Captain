@@ -42,9 +42,9 @@ namespace Kashmir.Captain.Controllers
         /// </summary>
         /// <returns></returns> 
         [HttpPost("logout")]
-        public IActionResult LogoutAsync()
+        public async Task<ActionResult<bool>> LogoutAsync()
         {
-            return Ok("Logged out successfully.");
+            return await Mediator.Send(new LogOutUserCommand());
         }
     }
 }
