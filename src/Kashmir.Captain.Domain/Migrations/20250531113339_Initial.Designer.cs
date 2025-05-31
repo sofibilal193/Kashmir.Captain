@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kashmir.Captain.Domain.Migrations
 {
     [DbContext(typeof(KcDbContext))]
-    [Migration("20250530211314_No_Profile")]
-    partial class No_Profile
+    [Migration("20250531113339_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

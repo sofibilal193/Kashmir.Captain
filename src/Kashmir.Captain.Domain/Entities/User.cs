@@ -13,9 +13,8 @@ namespace Kashmir.Captain.Domain.Entities
 
 		public User() { }
 
-		public User(string email, string? firstName, string? lastName, string? phoneNumber)
+		public User(string email, string? firstName, string? lastName, string? phoneNumber) : base(email)
 		{
-			UserName = email;
 			Email = email;
 			FirstName = firstName;
 			LastName = lastName;

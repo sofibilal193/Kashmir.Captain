@@ -16,13 +16,9 @@ using Microsoft.IdentityModel.Logging;
 using FluentValidation;
 using MediatR;
 using Kashmir.Captain.Application.Behaviors;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace ODL.Application.Common
 {
-    [ExcludeFromCodeCoverage]
     public static class DependencyInjection
     {
         // private static readonly AppSettings _settings = new();
@@ -52,7 +48,7 @@ namespace ODL.Application.Common
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = _ => true;
-                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             // add HTTP logging

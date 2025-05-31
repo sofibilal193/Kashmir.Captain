@@ -1,6 +1,6 @@
 
 
-namespace Kashmir.Captain.Domain
+namespace Kashmir.Captain.Comman
 {
     public class EmailTemplate
     {

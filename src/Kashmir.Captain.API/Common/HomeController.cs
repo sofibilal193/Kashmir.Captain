@@ -2,10 +2,11 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NSwag.Annotations;
 
 namespace Kashmir.Captain.API.Common
 {
-    // [OpenApiIgnore]
+    [OpenApiIgnore]
     [AllowAnonymous]
     [Route("Home")]
     public class HomeController : BaseController

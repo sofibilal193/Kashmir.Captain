@@ -1,5 +1,5 @@
 
-namespace Kashmir.Captain.Application.Services
+namespace Kashmir.Captain.Comman
 {
     public interface IUrlHelperService
     {

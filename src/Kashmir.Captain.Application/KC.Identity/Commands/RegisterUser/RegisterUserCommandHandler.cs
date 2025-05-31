@@ -1,11 +1,12 @@
 using Kashmir.Captain.Common.Extensions;
-using Kashmir.Captain.Application.Services;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Kashmir.Captain.Common.Entities;
 using Kashmir.Captain.Common.Validations;
+using Kashmir.Captain.Common;
+using Kashmir.Captain.Comman;
 
 namespace Kashmir.Captain.Application.Identity
 {
@@ -52,7 +53,7 @@ namespace Kashmir.Captain.Application.Identity
 		{
 			var confirmEmailLink = _urlHelperService.GenerateUrl("ConfirmEmail", "Account", new { token, userId = user.Id });
 
-			var mail = new EmailTemplate()
+			var mail = new Comman.EmailTemplate()
 			{
 				To = user.Email!,
 				Subject = ValidationMessages.Confirm_Email_Address,

@@ -1,5 +1,5 @@
 using Kashmir.Captain.Application;
-using Kashmir.Captain.Application.Services;
+using Kashmir.Captain.Comman;
 using Microsoft.Extensions.Options;
 using ODL.Application.Common;
 using System.Net.Mail;
@@ -16,7 +16,7 @@ namespace Kashmir.Captain.Infrastructure.Services
 			_emailSettings = emailSettings.Value;
 			_smtpClient = smtpClient;
 		}
-		public async Task SendEmailAsync(Domain.EmailTemplate emailTemplate)
+		public async Task SendEmailAsync(EmailTemplate emailTemplate)
 		{
 			try
 			{

@@ -1,8 +1,8 @@
 using Kashmir.Captain.Common.Extensions;
-using Kashmir.Captain.Application.Services;
 using Kashmir.Captain.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Kashmir.Captain.Comman;
 
 namespace Kashmir.Captain.Application.Identity
 {
@@ -29,7 +29,7 @@ namespace Kashmir.Captain.Application.Identity
 			var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 			var resetLink = _urlHelperService.GenerateUrl("ResetPassword", "Account", new { token, email = user.Email });
 
-			var mail = new Domain.EmailTemplate()
+			var mail = new EmailTemplate()
 			{
 				To = user.Email,
 				Subject = $"Reset Password GlobalConstants.ProjectName",

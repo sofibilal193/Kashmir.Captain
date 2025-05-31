@@ -1,18 +1,9 @@
-using Kashmir.Captain.Application;
 using Kashmir.Captain.Common;
 using Kashmir.Captain.Common.Entities;
 using Kashmir.Captain.Domain.Entities;
 using KC.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using ODL.Application.Common;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ODL.Mono.API
 {
@@ -79,15 +70,9 @@ namespace ODL.Mono.API
             var superAdminUser = await userManager.FindByEmailAsync(superAdminEmail);
             if (superAdminUser == null)
             {
-                superAdminUser = new User
-                {
-                    FirstName = "Super",
-                    LastName = "Admin",
-                    Email = superAdminEmail,
-                    UserName = "superadmin",
-                    PhoneNumber = "7006698882",
-                    EmailConfirmed = true,
-                };
+                superAdminUser = new User(superAdminEmail, "Super", "Admin", "7006698882");
+                superAdminUser.EmailConfirmed = true;
+                superAdminUser.PhoneNumberConfirmed = true;
 
                 var userResult = await userManager.CreateAsync(superAdminUser, superAdminPassword);
                 if (!userResult.Succeeded)
@@ -119,7 +104,7 @@ namespace ODL.Mono.API
             {
                 if (!await roleManager.RoleExistsAsync(roleName))
                 {
-                    var role = new Role { Name = roleName };
+                    var role = new Role(roleName);
                     var result = await roleManager.CreateAsync(role);
                     if (!result.Succeeded)
                     {

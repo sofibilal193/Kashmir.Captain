@@ -1,7 +1,6 @@
 
-using Kashmir.Captain.Domain;
 
-namespace Kashmir.Captain.Application.Services
+namespace Kashmir.Captain.Comman
 {
 	public interface IEmailService
 	{
