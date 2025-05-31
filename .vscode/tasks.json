@@ -59,7 +59,7 @@
       "problemMatcher": []
     },
     {
-      "label": "EF Update Database - IdDbContext",
+      "label": "EF Create Migration - InventoryDbContext",
       "type": "shell",
       "command": "dotnet",
       "options": {
@@ -67,10 +67,13 @@
       },
       "args": [
         "ef",
-        "database",
-        "update",
+        "migrations",
+        "add",
+        "${input:EFMigrationName}",
         "--context",
-        "IdDbContext",
+        "InventoryDbContext",
+        "--output-dir",
+        "Migrations",
         "--startup-project",
         "${workspaceFolder}/src/Kashmir.Captain.API"
       ],

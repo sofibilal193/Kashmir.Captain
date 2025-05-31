@@ -4,6 +4,12 @@ using Kashmir.Captain.Domain.Entities;
 using KC.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ODL.Mono.API
 {
@@ -15,17 +21,23 @@ namespace ODL.Mono.API
                 .AddAppConfig()
                 .Build();
 
+            // Migrate IdDbContext and seed roles & super admin
             await host.MigrateDbContextAsync<IdDbContext>(async (context, services) =>
-                {
-                    await SeedDefaultRolesAsync(services);
-                    await SeedSuperAdminAsync(context, services);
-                });
+            {
+                await SeedDefaultRolesAsync(services);
+                await SeedSuperAdminAsync(context, services);
+            });
+
+            // Migrate InventoryDbContext without seeding
+            await host.MigrateDbContextAsync<InventoryDbContext>();
+
             host.Run();
         }
 
-        public static async Task<IHost> MigrateDbContextAsync<T>(
-            this IHost host,
-            Func<T, IServiceProvider, Task> seeder) where T : DbContext
+        /// <summary>
+        /// Migrates the specified DbContext and optionally runs a seeder.
+        /// </summary>
+        public static async Task<IHost> MigrateDbContextAsync<T>(this IHost host, Func<T, IServiceProvider, Task>? seeder = default) where T : DbContext
         {
             using var scope = host.Services.CreateScope();
             var services = scope.ServiceProvider;
@@ -34,7 +46,11 @@ namespace ODL.Mono.API
             try
             {
                 await context.Database.MigrateAsync();
-                await seeder(context, services);
+
+                if (seeder != null)
+                {
+                    await seeder(context, services);
+                }
             }
             catch (Exception ex)
             {
@@ -46,6 +62,9 @@ namespace ODL.Mono.API
             return host;
         }
 
+        /// <summary>
+        /// Seeds the Super Admin user and assigns the SuperAdmin role.
+        /// </summary>
         public static async Task SeedSuperAdminAsync(IdDbContext context, IServiceProvider services)
         {
             var roleManager = services.GetRequiredService<RoleManager<Role>>();
@@ -55,6 +74,7 @@ namespace ODL.Mono.API
             string superAdminEmail = "test@test.com";
             string superAdminPassword = "Password@123";
 
+            // Create role if it doesn't exist
             if (!await roleManager.RoleExistsAsync(superAdminRoleName))
             {
                 var role = new Role { Name = superAdminRoleName };
@@ -66,13 +86,15 @@ namespace ODL.Mono.API
                 }
             }
 
-            // Create SuperAdmin user if it doesn't exist
+            // Create user if it doesn't exist
             var superAdminUser = await userManager.FindByEmailAsync(superAdminEmail);
             if (superAdminUser == null)
             {
-                superAdminUser = new User(superAdminEmail, "Super", "Admin", "7006698882");
-                superAdminUser.EmailConfirmed = true;
-                superAdminUser.PhoneNumberConfirmed = true;
+                superAdminUser = new User(superAdminEmail, "Super", "Admin", "7006698882")
+                {
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true
+                };
 
                 var userResult = await userManager.CreateAsync(superAdminUser, superAdminPassword);
                 if (!userResult.Succeeded)
@@ -82,7 +104,7 @@ namespace ODL.Mono.API
                 }
             }
 
-            // Assign SuperAdmin role to user if not already assigned
+            // Assign role to user if not already assigned
             if (!await userManager.IsInRoleAsync(superAdminUser, superAdminRoleName))
             {
                 var addToRoleResult = await userManager.AddToRoleAsync(superAdminUser, superAdminRoleName);
@@ -94,10 +116,12 @@ namespace ODL.Mono.API
             }
         }
 
+        /// <summary>
+        /// Seeds default roles from global constants.
+        /// </summary>
         public static async Task SeedDefaultRolesAsync(IServiceProvider services)
         {
             var roleManager = services.GetRequiredService<RoleManager<Role>>();
-
             var roles = GlobalConstants.Roles;
 
             foreach (var roleName in roles)
@@ -114,6 +138,5 @@ namespace ODL.Mono.API
                 }
             }
         }
-
     }
 }
