@@ -8,8 +8,8 @@ namespace Kashmir.Captain.Application.Home
 {
 	public class UpsertToolCommandHandler : IRequestHandler<UpsertToolCommand, int>
 	{
-		private readonly KcDbContext _contex;
-		public UpsertToolCommandHandler(KcDbContext contex)
+		private readonly IdDbContext _contex;
+		public UpsertToolCommandHandler(IdDbContext contex)
 		{
 			_contex = contex;
 		}

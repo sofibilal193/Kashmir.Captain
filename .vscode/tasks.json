@@ -38,7 +38,7 @@
       "problemMatcher": "$msCompile"
     },
     {
-      "label": "EF Create Migration - KcDbContext",
+      "label": "EF Create Migration - IdDbContext",
       "type": "shell",
       "command": "dotnet",
       "options": {
@@ -50,7 +50,7 @@
         "add",
         "${input:EFMigrationName}",
         "--context",
-        "KcDbContext",
+        "IdDbContext",
         "--output-dir",
         "Migrations",
         "--startup-project",
@@ -59,7 +59,7 @@
       "problemMatcher": []
     },
     {
-      "label": "EF Update Database - KcDbContext",
+      "label": "EF Update Database - IdDbContext",
       "type": "shell",
       "command": "dotnet",
       "options": {
@@ -70,7 +70,7 @@
         "database",
         "update",
         "--context",
-        "KcDbContext",
+        "IdDbContext",
         "--startup-project",
         "${workspaceFolder}/src/Kashmir.Captain.API"
       ],

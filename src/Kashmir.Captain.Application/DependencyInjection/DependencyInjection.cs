@@ -49,10 +49,10 @@ namespace Kashmir.Captain.Application
 
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
-            services.AddDbContext<KcDbContext>(options =>
+            services.AddDbContext<IdDbContext>(options =>
                 options.UseSqlServer(
-                    _settings.ConnectionStrings.KcDbContext
-                        ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found."),
+                    _settings.ConnectionStrings.IdDbContext
+                        ?? throw new InvalidOperationException("Connection string 'IdDbContext' not found."),
                     sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain")));
 
             services.AddIdentity<User, Role>(options =>
@@ -63,7 +63,7 @@ namespace Kashmir.Captain.Application
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
             })
-            .AddEntityFrameworkStores<KcDbContext>()
+            .AddEntityFrameworkStores<IdDbContext>()
             .AddDefaultTokenProviders();
 
             services.AddAuthorization(options =>

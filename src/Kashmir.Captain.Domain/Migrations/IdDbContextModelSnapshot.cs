@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kashmir.Captain.Domain.Migrations
 {
-    [DbContext(typeof(KcDbContext))]
-    partial class KcDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(IdDbContext))]
+    partial class IdDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

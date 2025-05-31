@@ -7,12 +7,12 @@ using Kashmir.Captain.Domain;
 
 namespace KC.Domain.Entities
 {
-	public class KcDbContext : IdentityDbContext<User, Role, int>
+	public class IdDbContext : IdentityDbContext<User, Role, int>
 	{
 		private readonly string _IdSchema;
 		private readonly string _UtilSchema;
 
-		public KcDbContext(DbContextOptions<KcDbContext> options, IConfiguration configuration)
+		public IdDbContext(DbContextOptions<IdDbContext> options, IConfiguration configuration)
 			: base(options)
 		{
 			_IdSchema = configuration.GetValue<string>("IdentitySchema") ?? "id";

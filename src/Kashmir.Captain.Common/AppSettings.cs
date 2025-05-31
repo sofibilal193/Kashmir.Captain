@@ -29,7 +29,7 @@ namespace Kashmir.Captain.Comman
 
     public record ConnectionStringsSettings
     {
-        public string KcDbContext { get; init; } = "";
+        public string IdDbContext { get; init; } = "";
         public string KcIdentityDbContext { get; init; } = "";
     }
 

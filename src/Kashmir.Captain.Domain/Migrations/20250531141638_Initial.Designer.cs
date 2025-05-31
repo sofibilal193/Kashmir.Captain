@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kashmir.Captain.Domain.Migrations
 {
-    [DbContext(typeof(KcDbContext))]
-    [Migration("20250531113339_Initial")]
+    [DbContext(typeof(IdDbContext))]
+    [Migration("20250531141638_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

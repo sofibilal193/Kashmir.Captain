@@ -8,10 +8,10 @@ namespace Kashmir.Captain.Application.Home
 {
 	public class GetToolsCommandHandler : IRequestHandler<GetToolsQuery, List<ToolDto>>
 	{
-		private readonly KcDbContext _context;
+		private readonly IdDbContext _context;
 		private readonly IMapper _mapper;
 
-		public GetToolsCommandHandler(KcDbContext context, IMapper mapper)
+		public GetToolsCommandHandler(IdDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

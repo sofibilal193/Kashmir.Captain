@@ -15,7 +15,7 @@ namespace ODL.Mono.API
                 .AddAppConfig()
                 .Build();
 
-            await host.MigrateDbContextAsync<KcDbContext>(async (context, services) =>
+            await host.MigrateDbContextAsync<IdDbContext>(async (context, services) =>
                 {
                     await SeedDefaultRolesAsync(services);
                     await SeedSuperAdminAsync(context, services);
@@ -46,7 +46,7 @@ namespace ODL.Mono.API
             return host;
         }
 
-        public static async Task SeedSuperAdminAsync(KcDbContext context, IServiceProvider services)
+        public static async Task SeedSuperAdminAsync(IdDbContext context, IServiceProvider services)
         {
             var roleManager = services.GetRequiredService<RoleManager<Role>>();
             var userManager = services.GetRequiredService<UserManager<User>>();

@@ -12,9 +12,9 @@ namespace Kashmir.Captain.Application.Identity
 	{
 		private readonly UserManager<User> _userManager;
 		private readonly RoleManager<Role> _roleManager;
-		private readonly KcDbContext _context;
+		private readonly IdDbContext _context;
 
-		public UpsertRoleCommandHandler(UserManager<User> userManager, RoleManager<Role> roleManager, KcDbContext context)
+		public UpsertRoleCommandHandler(UserManager<User> userManager, RoleManager<Role> roleManager, IdDbContext context)
 		{
 			_userManager = userManager;
 			_roleManager = roleManager;
