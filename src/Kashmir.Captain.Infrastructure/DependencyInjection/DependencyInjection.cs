@@ -28,6 +28,8 @@ namespace Kashmir.Captain.Infrastructure
                 return new UrlHelper(actionContext);
             });
 
+            // services.AddScoped<IUserRepository, UserRepository>();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services;
