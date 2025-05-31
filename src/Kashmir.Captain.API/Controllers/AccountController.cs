@@ -1,9 +1,5 @@
 using Kashmir.Captain.API.Common;
 using Kashmir.Captain.Application.Identity;
-using Kashmir.Captain.Common.Entities;
-using Kashmir.Captain.Domain.Entities;
-using KC.Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 

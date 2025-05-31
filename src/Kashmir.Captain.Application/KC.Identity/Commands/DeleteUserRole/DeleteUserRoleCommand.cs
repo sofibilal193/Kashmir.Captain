@@ -1,4 +1,3 @@
-using KC.Domain.Entities;
 using MediatR;
 using System.Text.Json.Serialization;
 

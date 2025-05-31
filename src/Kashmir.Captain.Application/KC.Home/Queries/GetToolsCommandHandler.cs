@@ -1,17 +1,17 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-using KC.Domain.Entities;
 using Kashmir.Captain.Application.Identity;
+using KC.Domain;
 
 namespace Kashmir.Captain.Application.Home
 {
 	public class GetToolsCommandHandler : IRequestHandler<GetToolsQuery, List<ToolDto>>
 	{
-		private readonly IdDbContext _context;
+		private readonly InventoryDbContext _context;
 		private readonly IMapper _mapper;
 
-		public GetToolsCommandHandler(IdDbContext context, IMapper mapper)
+		public GetToolsCommandHandler(InventoryDbContext context, IMapper mapper)
 		{
 			_context = context;
 			_mapper = mapper;

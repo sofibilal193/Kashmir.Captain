@@ -1,4 +1,3 @@
-using KC.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using MediatR;
 using Kashmir.Captain.Domain.Entities;

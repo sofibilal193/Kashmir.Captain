@@ -1,7 +1,7 @@
 using Kashmir.Captain.Common;
 using Kashmir.Captain.Common.Entities;
 using Kashmir.Captain.Domain.Entities;
-using KC.Domain.Entities;
+using KC.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

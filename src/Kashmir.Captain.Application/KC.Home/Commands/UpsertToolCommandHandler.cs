@@ -1,6 +1,6 @@
 using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
-using KC.Domain.Entities;
+using KC.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,8 +8,8 @@ namespace Kashmir.Captain.Application.Home
 {
 	public class UpsertToolCommandHandler : IRequestHandler<UpsertToolCommand, int>
 	{
-		private readonly IdDbContext _contex;
-		public UpsertToolCommandHandler(IdDbContext contex)
+		private readonly InventoryDbContext _contex;
+		public UpsertToolCommandHandler(InventoryDbContext contex)
 		{
 			_contex = contex;
 		}

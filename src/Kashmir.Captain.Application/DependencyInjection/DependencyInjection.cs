@@ -14,7 +14,6 @@ using Microsoft.IdentityModel.Logging;
 using FluentValidation;
 using MediatR;
 using Kashmir.Captain.Application.Behaviors;
-using KC.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Kashmir.Captain.Common.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -31,6 +30,7 @@ using Microsoft.Extensions.Options;
 using System.Net.Mail;
 using Kashmir.Captain.Comman;
 using Kashmir.Captain.Infrastructure;
+using KC.Domain;
 
 namespace Kashmir.Captain.Application
 {
@@ -50,10 +50,19 @@ namespace Kashmir.Captain.Application
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
             services.AddDbContext<IdDbContext>(options =>
+     options.UseSqlServer(
+         _settings.ConnectionStrings.IdDbContext
+             ?? throw new InvalidOperationException("Connection string 'IdDbContext' not found."),
+         sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain"))
+ );
+
+            services.AddDbContext<InventoryDbContext>(options =>
                 options.UseSqlServer(
-                    _settings.ConnectionStrings.IdDbContext
-                        ?? throw new InvalidOperationException("Connection string 'IdDbContext' not found."),
-                    sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain")));
+                    _settings.ConnectionStrings.InventoryDbContext
+                        ?? throw new InvalidOperationException("Connection string 'InventoryDbContext' not found."),
+                    sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain"))
+            );
+
 
             services.AddIdentity<User, Role>(options =>
             {

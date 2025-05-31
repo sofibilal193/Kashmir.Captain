@@ -1,6 +1,5 @@
 using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
-using KC.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace Kashmir.Captain.Application.Identity
