@@ -3,6 +3,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Kashmir.Captain.Domain\Kashmir.Captain.Domain.csproj" />
     <ProjectReference Include="..\Kashmir.Captain.Common\Kashmir.Captain.Common.csproj" />
+    <ProjectReference
+      Include="..\Kashmir.Captain.Infrastructure\Kashmir.Captain.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -18,6 +20,8 @@
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+
   </ItemGroup>
 
 </Project>

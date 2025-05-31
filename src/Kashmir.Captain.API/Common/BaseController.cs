@@ -1,10 +1,10 @@
+using Kashmir.Captain.Comman;
 using Kashmir.Captain.Common.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using ODL.Application.Common;
 
 namespace Kashmir.Captain.API.Common
 {

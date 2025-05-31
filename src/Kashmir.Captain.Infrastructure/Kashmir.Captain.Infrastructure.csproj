@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Kashmir.Captain.Domain\Kashmir.Captain.Domain.csproj" />
-    <ProjectReference Include="..\Kashmir.Captain.Application\Kashmir.Captain.Application.csproj" />
+    <ProjectReference Include="..\Kashmir.Captain.Common\Kashmir.Captain.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

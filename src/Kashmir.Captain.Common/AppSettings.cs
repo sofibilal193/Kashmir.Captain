@@ -1,7 +1,5 @@
-using Kashmir.Captain.Application;
-using Kashmir.Captain.Domain;
 
-namespace ODL.Application.Common
+namespace Kashmir.Captain.Comman
 {
     public record AppSettings
     {

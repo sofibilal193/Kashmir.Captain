@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
@@ -16,27 +14,116 @@ using Microsoft.IdentityModel.Logging;
 using FluentValidation;
 using MediatR;
 using Kashmir.Captain.Application.Behaviors;
+using KC.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using Kashmir.Captain.Common.Entities;
+using Microsoft.AspNetCore.Identity;
+using Kashmir.Captain.Domain.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using KC.Common;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Kashmir.Captain.Common;
+using FluentValidation.AspNetCore;
+using Kashmir.Captain.Application.Identity;
+using System.Net;
+using Microsoft.Extensions.Options;
+using System.Net.Mail;
+using Kashmir.Captain.Comman;
+using Kashmir.Captain.Infrastructure;
 
-namespace ODL.Application.Common
+namespace Kashmir.Captain.Application
 {
     public static class DependencyInjection
     {
-        // private static readonly AppSettings _settings = new();
+        private static readonly AppSettings _settings = new();
 
         public static IServiceCollection AddApplication(this IServiceCollection services,
             IConfiguration configuration, IHostEnvironment env, ILogger logger)
         {
-            // services.AddSingleton(configuration);
-            // services.Configure<AppSettings>(configuration.GetSection("AppSettings"));
-            // configuration.GetSection("AppSettings").Bind(_settings);
+            services.AddInfrastructure(configuration);
+
+            services.AddSingleton(configuration);
+            services.Configure<AppSettings>(configuration);
+            configuration.Bind(_settings);
 
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
-            services.AddHttpContextAccessor();
+            services.AddDbContext<KcDbContext>(options =>
+                options.UseSqlServer(
+                    _settings.ConnectionStrings.KcDbContext
+                        ?? throw new InvalidOperationException("Connection string 'KcDbContext' not found."),
+                    sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain")));
+
+            services.AddIdentity<User, Role>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+            })
+            .AddEntityFrameworkStores<KcDbContext>()
+            .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(nameof(RoleType.User), policy =>
+                    policy.RequireRole(nameof(RoleType.SuperAdmin), nameof(RoleType.Admin), nameof(RoleType.User)));
+                options.AddPolicy(nameof(RoleType.Admin), policy =>
+                    policy.RequireRole(nameof(RoleType.SuperAdmin), nameof(RoleType.Admin)));
+                options.AddPolicy(nameof(RoleType.SuperAdmin), policy =>
+                    policy.RequireRole(nameof(RoleType.SuperAdmin)));
+            });
+
+
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = _settings.Jwt.Issuer,
+                    ValidAudience = _settings.Jwt.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Jwt.Key))
+                };
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options =>
+            {
+                options.Cookie.Name = "KcCookies";
+            });
+
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            // Cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
+
+
+            services.AddFluentValidationAutoValidation()
+                .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             // add Mediatr
             services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(LoggingBehavior<,>).Assembly));
-
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
@@ -46,10 +133,24 @@ namespace ODL.Application.Common
             // configure cookie options
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = _ => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddSingleton(serviceProvider =>
+            {
+                var emailSettings = serviceProvider.GetRequiredService<IOptions<EmailSettings>>().Value;
+                return new SmtpClient(emailSettings.SmtpServer)
+                {
+                    Port = emailSettings.SmtpPort,
+                    Credentials = new NetworkCredential(emailSettings.SenderEmail, emailSettings.SenderPassword),
+                    EnableSsl = emailSettings.EnableSsl,
+                };
+            });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddEndpointsApiExplorer();
 
             // add HTTP logging
             services.AddHttpLogging(options =>
@@ -68,8 +169,6 @@ namespace ODL.Application.Common
                 options.RequestHeaders.Add("Client-IP");
             });
 
-
-
             return services;
         }
 
@@ -80,32 +179,39 @@ namespace ODL.Application.Common
 
             var sb = services.BuildServiceProvider();
 
-            var hcs = from t in Assembly.GetEntryAssembly()?.GetTypes()
-                      where t.GetInterfaces().Contains(typeof(IHealthCheck))
-                      select ActivatorUtilities.CreateInstance(sb, t) as IHealthCheck;
-            if (hcs?.Count() > 0)
+            var entryAssembly = Assembly.GetEntryAssembly();
+            if (entryAssembly != null)
             {
-                var tags = new[] { "custom" };
-                foreach (var hc in hcs)
+                var hcs = from t in entryAssembly.GetTypes()
+                          where typeof(IHealthCheck).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract
+                          select ActivatorUtilities.CreateInstance(sb, t) as IHealthCheck;
+
+                if (hcs?.Any() == true)
                 {
-                    hcBuilder.AddCheck(hc.GetType().Name.ToLowerInvariant().Replace("healthcheck", ""),
-                        hc, HealthStatus.Degraded, tags);
+                    var tags = new[] { "custom" };
+                    foreach (var hc in hcs)
+                    {
+                        hcBuilder.AddCheck(
+                            hc.GetType().Name.ToLowerInvariant().Replace("healthcheck", ""),
+                            hc,
+                            HealthStatus.Degraded,
+                            tags);
+                    }
                 }
             }
+
             return services;
         }
 
-
         public static IApplicationBuilder UseApplication(this IApplicationBuilder app, IHostEnvironment env, IServiceCollection services, bool enableHttpLogging)
         {
+            app.UseInfrastructure(env, services, true);
+
             if (env.IsDevelopment())
                 IdentityModelEventSource.ShowPII = true;
 
-
             if (!env.IsDevelopment() && !env.IsEnvironment("Test"))
             {
-                // when in azure, ensure headers are forwarded to prevent too many multiple redirects issue
-                // https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.2&tabs=visual-studio
                 app.UseXForwardedHeaders();
             }
 
@@ -120,10 +226,12 @@ namespace ODL.Application.Common
                 RegisteredServicesPage(app, services);
             }
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
-            // UseCors with default policy.
-            app.UseCors();
+            // UseCors with named policy
+            app.UseCors("AllowFrontend");
 
             // authentication & authorization
             app.UseAuthentication();
@@ -135,9 +243,20 @@ namespace ODL.Application.Common
                 endpoints.MapControllers();
             });
 
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                    c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+                });
+            }
+
+            app.UseMiddleware<ExceptionMiddleware>();
+
             return app;
         }
-
 
         private static IApplicationBuilder UseXForwardedHeaders(this IApplicationBuilder app)
         {
@@ -146,26 +265,22 @@ namespace ODL.Application.Common
                 ForwardedHeaders = ForwardedHeaders.All
             };
 
-            // Only loopback proxies are allowed by default.
-            // Clear that restriction because forwarders are being enabled by explicit configuration.
-            // https://stackoverflow.com/a/56469499/5358985
             options.KnownNetworks.Clear();
             options.KnownProxies.Clear();
 
             app.UseForwardedHeaders(options);
 
-            app.Use((context, next) =>
+            app.Use(async (context, next) =>
             {
                 if (context.Request.Headers.TryGetValue("X-Forwarded-PathBase", out var pathBases))
                 {
                     context.Request.PathBase = pathBases[0];
                 }
-                return next();
+                await next();
             });
 
             return app;
         }
-
 
         private static void RegisteredServicesPage(IApplicationBuilder app, IServiceCollection services)
         {
