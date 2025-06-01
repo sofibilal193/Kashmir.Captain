@@ -133,9 +133,9 @@ namespace Kashmir.Captain.Application
             services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(LoggingBehavior<,>).Assembly));
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachePipelineBehavior<,>));
-            // services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
 
             // configure cookie options
             services.Configure<CookiePolicyOptions>(options =>

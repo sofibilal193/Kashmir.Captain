@@ -4,15 +4,9 @@ using Kashmir.Captain.Domain.Entities;
 using KC.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using KC.Domain.Context;
 
-namespace ODL.Mono.API
+namespace Kashmir.Captain.API
 {
     public static class Program
     {

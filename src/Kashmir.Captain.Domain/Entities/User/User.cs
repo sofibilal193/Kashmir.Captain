@@ -25,7 +25,7 @@ namespace Kashmir.Captain.Domain.Entities
 			PhoneNumber = phoneNumber;
 		}
 
-		public void Update(string? firstName, string? lastName, string? phoneNumber)
+		public void Update(string firstName, string lastName, string? phoneNumber)
 		{
 			FirstName = firstName;
 			LastName = lastName;
