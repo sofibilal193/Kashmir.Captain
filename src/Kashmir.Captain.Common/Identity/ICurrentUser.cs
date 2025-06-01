@@ -25,7 +25,5 @@ namespace Kashmir.Captain.Common
         bool IsDisabled { get; }
 
         bool IsMultipleOrgs { get; }
-
-        List<int> OrgIds { get; }
     }
 }

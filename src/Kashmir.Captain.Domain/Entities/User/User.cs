@@ -7,9 +7,9 @@ namespace Kashmir.Captain.Domain.Entities
 	{
 		[Key]
 		public override int Id { get; set; }
-		public string? FirstName { get; set; }
-		public string? LastName { get; set; }
-		public override string? PhoneNumber { get; set; }
+		public string FirstName { get; set; } = string.Empty;
+		public string LastName { get; set; } = string.Empty;
+		public override string? PhoneNumber { get; set; } = string.Empty;
 		public List<Address>? Addresses { get; set; }
 
 		public User()
@@ -17,7 +17,7 @@ namespace Kashmir.Captain.Domain.Entities
 			Addresses = new();
 		}
 
-		public User(string email, string? firstName, string? lastName, string? phoneNumber) : base(email)
+		public User(string email, string firstName, string lastName, string? phoneNumber) : base(email)
 		{
 			Email = email;
 			FirstName = firstName;

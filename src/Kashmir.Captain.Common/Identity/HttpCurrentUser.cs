@@ -9,23 +9,21 @@ namespace Kashmir.Captain.Common
         public HttpCurrentUser(IHttpContextAccessor httpContextAccessor)
         {
             ArgumentNullException.ThrowIfNull(httpContextAccessor);
-            // var context = httpContextAccessor.HttpContext;
-            // IsAuthenticated = context?.IsAuthenticated() ?? false;
-            // AuthProviderId = context?.GetAuthProviderId();
-            // FullName = context?.GetFullName();
-            // FirstName = context?.GetFirstName();
-            // LastName = context?.GetLastName();
-            // Email = context?.GetEmail();
-            // MobilePhone = context?.GetMobilePhone();
-            // Source = context?.GetRequestIp();
-            // UserId = context?.GetUserId();
-            // IsDisabled = context?.GetIsDisabled() ?? false;
-            // IsMultipleOrgs = context?.GetIsMultipleOrgs() ?? false;
-            // OrgType = context?.User?.GetOrgType() ?? OrgType.Dealer;
-            // OrgIds = context?.User?.GetOrgIds() ?? new();
+            var context = httpContextAccessor.HttpContext;
+            IsAuthenticated = context?.IsAuthenticated() ?? false;
+            AuthProviderId = context?.GetAuthProviderId();
+            FullName = context?.GetFullName();
+            FirstName = context?.GetFirstName();
+            LastName = context?.GetLastName();
+            Email = context?.GetEmail();
+            MobilePhone = context?.GetMobilePhone();
+            Source = context?.GetRequestIp();
+            UserId = context?.GetUserId();
+            IsDisabled = context?.GetIsDisabled() ?? false;
+            IsMultipleOrgs = context?.GetIsMultipleOrgs() ?? false;
         }
 
-        public string AuthProvider { get; }
+        public string AuthProvider { get; } = "B2C";
 
         public string? AuthProviderId { get; }
 
@@ -48,7 +46,5 @@ namespace Kashmir.Captain.Common
         public bool IsDisabled { get; }
 
         public bool IsMultipleOrgs { get; }
-
-        public List<int> OrgIds { get; }
     }
 }

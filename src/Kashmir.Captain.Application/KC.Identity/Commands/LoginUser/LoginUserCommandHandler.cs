@@ -61,6 +61,8 @@ namespace Kashmir.Captain.Application.Identity
 						new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
 						new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 						new Claim(ClaimTypes.Email, user.Email),
+						new Claim(ClaimTypes.GivenName, user.FirstName),
+						new Claim(ClaimTypes.Surname, user.LastName),
 						new Claim(ClaimTypes.Role,  (await _userManager.GetRolesAsync(user)).First())
 					};
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kashmir.Captain.Domain.Migrations
 {
     [DbContext(typeof(IdDbContext))]
-    [Migration("20250601164436_New_Add_ss")]
-    partial class New_Add_ss
+    [Migration("20250601195256_Create_Identity_User_Role")]
+    partial class Create_Identity_User_Role
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,9 +78,11 @@ namespace Kashmir.Captain.Domain.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
