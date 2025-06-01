@@ -2,6 +2,10 @@ using Microsoft.OpenApi.Models;
 using Kashmir.Captain.Comman;
 using Kashmir.Captain.Application;
 using Kashmir.Captain.Domain.Common;
+using Microsoft.IdentityModel.Tokens;
+using Kashmir.Captain.Common;
+using Kashmir.Captain.Common.Extensions;
+using Kashmir.Captain.Common.Crypto;
 
 namespace ODL.Mono.API
 {
@@ -68,6 +72,12 @@ namespace ODL.Mono.API
 
             // add health checks
             services.AddAppHealthChecks();
+
+            services.Configure<CryptoOptions>(Configuration.GetSection("CryptoOptions"));
+
+            services.AddSingleton<Kashmir.Captain.Common.Crypto.ICryptoProvider, CryptoProvider>();
+            services.AddScoped<ICurrentUser, HttpCurrentUser>();
+            services.AddTransient<IDateTime, UtcDateTime>();
 
             _services = services;
         }

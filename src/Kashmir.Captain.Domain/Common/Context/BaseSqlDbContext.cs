@@ -8,6 +8,8 @@ using MediatR;
 using Microsoft.IdentityModel.Tokens;
 using Kashmir.Captain.Common;
 using Kashmir.Captain.Common.Extensions;
+using Kashmir.Captain.Common.Crypto;
+using ICryptoProvider = Kashmir.Captain.Common.Crypto.ICryptoProvider;
 
 namespace Kashmir.Captain.Domain.Common
 {

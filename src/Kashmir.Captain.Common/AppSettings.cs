@@ -1,4 +1,7 @@
 
+using Kashmir.Captain.Common.Crypto;
+using Microsoft.Extensions.Configuration;
+
 namespace Kashmir.Captain.Comman
 {
     public record AppSettings
@@ -8,6 +11,7 @@ namespace Kashmir.Captain.Comman
         public ConnectionStringsSettings ConnectionStrings { get; init; } = new();
         public JwtSettings Jwt { get; init; } = new();
         public EmailSettings EmailSettings { get; init; } = new();
+        public CryptoSettings Crypto { get; init; } = new();
     }
 
     public record SuperAdminCredentials
@@ -15,6 +19,12 @@ namespace Kashmir.Captain.Comman
         public string Role { get; init; } = "";
         public string Email { get; init; } = "";
         public string Password { get; init; } = "";
+    }
+
+    public record CryptoSettings
+    {
+        public string Key { get; init; } = "";
+        public string KeySize { get; init; } = "";
     }
     public record LoggingSettings
     {

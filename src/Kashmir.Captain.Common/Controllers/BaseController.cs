@@ -42,11 +42,4 @@ namespace Kashmir.Captain.Common
         protected string BaseUrl => string.Format("{0}://{1}",
             Request.Scheme, Request.Host);
     }
-
-    public interface ICurrentUser
-    {
-        public int? UserId { get; set; }
-        public string? FullName { get; set; }
-        public string? Source { get; set; }
-    }
 }

@@ -2,23 +2,24 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Kashmir.Captain.Domain.Entities;
 using Kashmir.Captain.Domain;
+using Kashmir.Captain.Domain.Common;
+using Microsoft.IdentityModel.Tokens;
+using Kashmir.Captain.Common;
+using Kashmir.Captain.Common.Extensions;
+using Microsoft.Extensions.Logging;
+using Kashmir.Captain.Common.Crypto;
+using ICryptoProvider = Kashmir.Captain.Common.Crypto.ICryptoProvider;
 
 namespace KC.Domain.Context
 {
-    public class InventoryDbContext : DbContext
+    public class InventoryDbContext : BaseSqlDbContext<InventoryDbContext>
     {
-        private readonly string _inventorySchema;
+        private readonly string _inventorySchema = "inventory";
 
-        public InventoryDbContext(DbContextOptions<InventoryDbContext> options, IConfiguration configuration)
-            : base(options)
-        {
-            _inventorySchema = configuration.GetValue<string>("InventorySchema") ?? "inventory";
-        }
-
-        //        public InventoryDbContext(DbContextOptions<InventoryDbContext> options, ILogger<InventoryDbContext> logger,
-        //     ICryptoProvider cryptoProvider, ICurrentUser currentUser, IDateTime dateTime, MediatR.IMediator mediator)
-        // : base(options, logger, cryptoProvider, currentUser, dateTime, mediator)
-        //     { }
+        public InventoryDbContext(DbContextOptions<InventoryDbContext> options, ILogger<InventoryDbContext> logger,
+        ICryptoProvider cryptoProvider, ICurrentUser currentUser, IDateTime dateTime, MediatR.IMediator mediator)
+     : base(options, logger, cryptoProvider, currentUser, dateTime, mediator)
+        { }
 
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Machine> Machines { get; set; }

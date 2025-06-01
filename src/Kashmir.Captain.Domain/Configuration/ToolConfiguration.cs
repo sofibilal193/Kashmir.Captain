@@ -1,10 +1,11 @@
+using Kashmir.Captain.Domain.Common;
 using Kashmir.Captain.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kashmir.Captain.Domain
 {
-	public class ToolConfiguration : IEntityTypeConfiguration<Tool>
+	public class ToolConfiguration : SqlEntityConfiguration<Tool>
 	{
 		private readonly string _schema;
 
@@ -13,7 +14,7 @@ namespace Kashmir.Captain.Domain
 			_schema = schema;
 		}
 
-		public void Configure(EntityTypeBuilder<Tool> builder)
+		public override void Configure(EntityTypeBuilder<Tool> builder)
 		{
 			builder.ToTable("Tools", _schema);
 

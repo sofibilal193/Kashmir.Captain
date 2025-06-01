@@ -13,6 +13,8 @@ using Kashmir.Captain.Common;
 using Kashmir.Captain.Common.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Kashmir.Captain.Domain.Extensions;
+using Kashmir.Captain.Common.Crypto;
+using ICryptoProvider = Kashmir.Captain.Common.Crypto.ICryptoProvider;
 
 namespace Kashmir.Captain.Domain.Common
 {
@@ -83,6 +85,34 @@ namespace Kashmir.Captain.Domain.Common
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+        // protected void InitEncryptionValueConverter(ModelBuilder modelBuilder)
+        // {
+        //     foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        //     {
+        //         foreach (var property in entityType.GetProperties())
+        //         {
+        //             var annotation = property.FindAnnotation(CustomAnnotations.Encryption);
+        //             if (annotation is not null)
+        //             {
+        //                 var converter = new EncryptedStringValueConverter(CryptoProvider);
+        //                 property.SetValueConverter(converter);
+
+        //                 // adjust max length to accomodate for length of encrypted strings
+        //                 var maxLength = property.GetMaxLength();
+        //                 if (maxLength.HasValue)
+        //                 {
+        //                     var testValue = new string('A', maxLength.Value);
+        //                     var convertedValue = converter.ConvertToProvider.Invoke(testValue) as string;
+        //                     if (convertedValue is not null)
+        //                     {
+        //                         property.SetMaxLength(convertedValue.Length);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         // https://docs.microsoft.com/en-us/dotnet/standard/garbage-collection/implementing-disposeasync
         public override async ValueTask DisposeAsync()
