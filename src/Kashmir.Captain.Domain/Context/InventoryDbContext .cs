@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Kashmir.Captain.Domain.Entities;
 using Kashmir.Captain.Domain;
 
-namespace KC.Domain
+namespace KC.Domain.Context
 {
     public class InventoryDbContext : DbContext
     {
@@ -14,6 +14,11 @@ namespace KC.Domain
         {
             _inventorySchema = configuration.GetValue<string>("InventorySchema") ?? "inventory";
         }
+
+        //        public InventoryDbContext(DbContextOptions<InventoryDbContext> options, ILogger<InventoryDbContext> logger,
+        //     ICryptoProvider cryptoProvider, ICurrentUser currentUser, IDateTime dateTime, MediatR.IMediator mediator)
+        // : base(options, logger, cryptoProvider, currentUser, dateTime, mediator)
+        //     { }
 
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Machine> Machines { get; set; }

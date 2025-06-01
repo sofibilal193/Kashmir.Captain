@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Microsoft.AspNetCore.Authorization;
 using Kashmir.Captain.Application.Identity;
-using Kashmir.Captain.API.Common;
+using Kashmir.Captain.Common;
 
 namespace Kashmir.Captain.Controllers
 {

@@ -1,4 +1,4 @@
-using Kashmir.Captain.API.Common;
+using Kashmir.Captain.Common;
 using Kashmir.Captain.Application.Home;
 using Microsoft.AspNetCore.Mvc;
 

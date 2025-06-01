@@ -1,7 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace Kashmir.Captain.Domain.Common
 {
 	public abstract class BaseEntity : BaseEntityLogProps
 	{
+
+		[JsonIgnore]
 		private int? _requestedHashCode;
 
 		private bool _isTest;
@@ -17,7 +21,6 @@ namespace Kashmir.Captain.Domain.Common
 		}
 
 		#endregion
-
 		public virtual void Disable()
 		{
 			_isDisabled = true;

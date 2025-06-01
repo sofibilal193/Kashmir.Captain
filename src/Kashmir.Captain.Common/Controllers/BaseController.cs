@@ -4,9 +4,12 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Kashmir.Captain.API.Common
+namespace Kashmir.Captain.Common
 {
     [ApiController]
     [Authorize(Policy = nameof(RoleType.User))]
@@ -42,5 +45,8 @@ namespace Kashmir.Captain.API.Common
 
     public interface ICurrentUser
     {
+        public int? UserId { get; set; }
+        public string? FullName { get; set; }
+        public string? Source { get; set; }
     }
 }

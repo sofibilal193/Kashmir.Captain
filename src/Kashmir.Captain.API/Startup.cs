@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Kashmir.Captain.Comman;
 using Kashmir.Captain.Application;
+using Kashmir.Captain.Domain.Common;
 
 namespace ODL.Mono.API
 {
@@ -33,6 +34,7 @@ namespace ODL.Mono.API
             services.AddApplication(Configuration, Environment, _logger);
 
             services.AddControllers();
+            // services.AddScoped<IDbContext>(x => x.GetRequiredService<TContext>());
 
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
 

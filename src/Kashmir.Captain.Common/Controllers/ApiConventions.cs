@@ -3,7 +3,7 @@ using Kashmir.Captain.Common.Validations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace Kashmir.Captain.API.Common
+namespace Kashmir.Captain.Common
 {
 #pragma warning disable S1186 // Add a nested comment...
 #pragma warning disable RCS1163 // Remove unused parameter

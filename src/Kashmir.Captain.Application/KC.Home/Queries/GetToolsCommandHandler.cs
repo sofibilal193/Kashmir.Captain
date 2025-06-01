@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Kashmir.Captain.Application.Identity;
 using KC.Domain;
+using KC.Domain.Context;
 
 namespace Kashmir.Captain.Application.Home
 {

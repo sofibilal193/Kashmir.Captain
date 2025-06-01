@@ -31,6 +31,7 @@ using System.Net.Mail;
 using Kashmir.Captain.Comman;
 using Kashmir.Captain.Infrastructure;
 using KC.Domain;
+using KC.Domain.Context;
 
 namespace Kashmir.Captain.Application
 {

@@ -1,6 +1,7 @@
 using Kashmir.Captain.Common.Extensions;
 using Kashmir.Captain.Domain.Entities;
 using KC.Domain;
+using KC.Domain.Context;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

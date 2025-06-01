@@ -1,4 +1,4 @@
-using Kashmir.Captain.API.Common;
+using Kashmir.Captain.Common;
 using Kashmir.Captain.Application.Identity;
 using Kashmir.Captain.Common.Entities;
 using Kashmir.Captain.Domain.Entities;
