@@ -10,8 +10,12 @@ namespace Kashmir.Captain.Domain.Entities
 		public string? FirstName { get; set; }
 		public string? LastName { get; set; }
 		public override string? PhoneNumber { get; set; }
+		public List<Address>? Addresses { get; set; }
 
-		public User() { }
+		public User()
+		{
+			Addresses = new();
+		}
 
 		public User(string email, string? firstName, string? lastName, string? phoneNumber) : base(email)
 		{

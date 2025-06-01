@@ -21,19 +21,30 @@ namespace KC.Domain
 		{
 			base.OnModelCreating(builder);
 
-			builder.Entity<User>(entity => entity.ToTable("Users", _idSchema));
+			builder.Entity<User>(entity =>
+			{
+				entity.ToTable("Users", _idSchema);
+				entity.OwnsMany(x => x.Addresses, address =>
+						{
+							address.Property(a => a.Id).HasColumnOrder(0);
+						});
+			});
+
 			builder.Entity<Role>(entity => entity.ToTable("Roles", _idSchema));
+
 			builder.Entity<IdentityUserRole<int>>(entity =>
 			{
 				entity.ToTable("UserRoles", _idSchema);
 				entity.HasKey(e => new { e.UserId, e.RoleId });
 				entity.HasIndex(e => e.UserId).IsUnique();
 			});
+
 			builder.Entity<IdentityUserClaim<int>>(entity => entity.ToTable("UserClaims", _idSchema));
 			builder.Entity<IdentityUserLogin<int>>(entity => entity.ToTable("UserLogins", _idSchema));
 			builder.Entity<IdentityRoleClaim<int>>(entity => entity.ToTable("RoleClaims", _idSchema));
 			builder.Entity<IdentityUserToken<int>>(entity => entity.ToTable("UserTokens", _idSchema));
 		}
+
 	}
 
 }
