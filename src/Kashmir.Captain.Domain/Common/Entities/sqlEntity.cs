@@ -1,6 +1,4 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-
 namespace Kashmir.Captain.Domain.Common
 {
 	public abstract class SqlEntity : BaseEntity, IAggregateRoot

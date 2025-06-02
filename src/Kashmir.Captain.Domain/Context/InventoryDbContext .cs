@@ -1,13 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Kashmir.Captain.Domain.Entities;
 using Kashmir.Captain.Domain;
 using Kashmir.Captain.Domain.Common;
-using Microsoft.IdentityModel.Tokens;
 using Kashmir.Captain.Common;
 using Kashmir.Captain.Common.Extensions;
 using Microsoft.Extensions.Logging;
-using Kashmir.Captain.Common.Crypto;
 using ICryptoProvider = Kashmir.Captain.Common.Crypto.ICryptoProvider;
 
 namespace KC.Domain.Context
@@ -18,7 +15,7 @@ namespace KC.Domain.Context
 
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options, ILogger<InventoryDbContext> logger,
         ICryptoProvider cryptoProvider, ICurrentUser currentUser, IDateTime dateTime, MediatR.IMediator mediator)
-     : base(options, logger, cryptoProvider, currentUser, dateTime, mediator)
+        : base(options, logger, cryptoProvider, currentUser, dateTime, mediator)
         { }
 
         public DbSet<Worker> Workers { get; set; }

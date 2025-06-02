@@ -30,7 +30,7 @@ namespace Kashmir.Captain.Application.Identity
 			var createdResult = await _userManager.CreateAsync(user, request.Password);
 			if (createdResult.Succeeded)
 			{
-				var addRoleResult = await _userManager.AddToRoleAsync(user, nameof(RoleType.User));
+				var addRoleResult = await _userManager.AddToRoleAsync(user, nameof(RoleType.Worker));
 				if (addRoleResult.Succeeded)
 				{
 					var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -7,6 +7,6 @@ namespace Kashmir.Captain.Common.Entities
 		Vendor, // Upload their products or manage listings,
 		Contractor, // Rent or purchase tools, equipment, and materials
 		Customer, // who is buying/taking on rent
-		User
+		Worker, // who is working 
 	}
 }

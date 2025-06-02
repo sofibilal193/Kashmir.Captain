@@ -78,8 +78,8 @@ namespace Kashmir.Captain.Application
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(nameof(RoleType.User), policy =>
-                    policy.RequireRole(nameof(RoleType.SuperAdmin), nameof(RoleType.Admin), nameof(RoleType.User)));
+                options.AddPolicy(nameof(RoleType.Worker), policy =>
+                    policy.RequireRole(nameof(RoleType.SuperAdmin), nameof(RoleType.Admin), nameof(RoleType.Worker)));
                 options.AddPolicy(nameof(RoleType.Admin), policy =>
                     policy.RequireRole(nameof(RoleType.SuperAdmin), nameof(RoleType.Admin)));
                 options.AddPolicy(nameof(RoleType.SuperAdmin), policy =>

@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 namespace Kashmir.Captain.Common
 {
     [ApiController]
-    [Authorize(Policy = nameof(RoleType.User))]
+    [Authorize(Policy = nameof(RoleType.Worker))]
     [EnableCors("AllowFrontend")]
     [ApiConventionType(typeof(ApiConventions))]
     public abstract class BaseController : ControllerBase

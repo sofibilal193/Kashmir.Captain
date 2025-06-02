@@ -9,12 +9,11 @@ namespace KC.Domain
 {
 	public class IdDbContext : IdentityDbContext<User, Role, int>
 	{
-		private readonly string _idSchema;
+		private readonly string _idSchema = "id";
 
 		public IdDbContext(DbContextOptions<IdDbContext> options, IConfiguration configuration)
 			: base(options)
 		{
-			_idSchema = configuration.GetValue<string>("IdentitySchema") ?? "id";
 		}
 
 		protected override void OnModelCreating(ModelBuilder builder)
