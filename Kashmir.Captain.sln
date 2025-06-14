@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashmir.Captain.Shared", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashmir.Captain.Web", "src\Kashmir.Captain.Web\Kashmir.Captain.Web.csproj", "{62E176AB-8451-4631-9344-E6C63CB64433}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kashmir.Captain.Tests", "tests\Kashmir.Captain.Tests\Kashmir.Captain.Tests.csproj", "{32558932-FDB8-46C2-8B34-F6D52B731EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,18 @@ Global
 		{62E176AB-8451-4631-9344-E6C63CB64433}.Release|x64.Build.0 = Release|Any CPU
 		{62E176AB-8451-4631-9344-E6C63CB64433}.Release|x86.ActiveCfg = Release|Any CPU
 		{62E176AB-8451-4631-9344-E6C63CB64433}.Release|x86.Build.0 = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|x64.Build.0 = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Debug|x86.Build.0 = Debug|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|x64.ActiveCfg = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|x64.Build.0 = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|x86.ActiveCfg = Release|Any CPU
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +111,6 @@ Global
 		{F28CC75A-1E6B-4317-B25A-837D82163271} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{64B23519-4DE2-4EFD-99CF-ED6D936939C2} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{62E176AB-8451-4631-9344-E6C63CB64433} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{32558932-FDB8-46C2-8B34-F6D52B731EBC} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
