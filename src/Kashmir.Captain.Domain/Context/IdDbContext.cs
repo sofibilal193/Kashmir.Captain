@@ -5,9 +5,9 @@ using Kashmir.Captain.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Kashmir.Captain.Domain.Interfaces;
 
-namespace Kashmir.Captain.Infrastructure
+namespace Kashmir.Captain.Domain
 {
-	public class IdDbContext : IdentityDbContext<User, Role, int>, IIdentityDbContext
+	public class IdDbContext : IdentityDbContext<User, Role, int>
 	{
 		private readonly string _idSchema = "id";
 

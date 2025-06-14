@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Kashmir.Captain.Application.Auth
 {
-    public record RegisterUserCommand : IRequest<RegisterResponse>
+    public class RegisterUserCommand : IRequest<RegisterResponse>
     {
         [JsonIgnore]
         public int? Id { get; private set; }

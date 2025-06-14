@@ -6,6 +6,9 @@ using Kashmir.Captain.Shared;
 using Kashmir.Captain.Infrastructure;
 using Kashmir.Captain.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Kashmir.Captain.Domain;
+using Kashmir.Captain.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -18,8 +21,11 @@ builder.Services.AddDbContext<IdDbContext>(options => options.UseSqlServer(appSe
        sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain"))
 );
 
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<IdDbContext>()
+    .AddDefaultTokenProviders();
 
-builder.Services.AddScoped<IIdentityDbContext>(provider => provider.GetRequiredService<IdDbContext>());
+// builder.Services.AddScoped<IIdentityDbContext>(provider => provider.GetRequiredService<IdDbContext>());
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

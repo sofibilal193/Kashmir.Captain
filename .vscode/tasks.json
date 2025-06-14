@@ -1,41 +1,88 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/Kashmir.Captain.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/Kashmir.Captain.sln",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary;ForceNoAlign"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "--project",
-                "${workspaceFolder}/Kashmir.Captain.sln"
-            ],
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "EF Create Migration - IdDbContext",
+      "type": "shell",
+      "command": "dotnet",
+      "options": {
+        "cwd": "${workspaceFolder}/src/Kashmir.Captain.Domain"
+      },
+      "args": [
+        "ef",
+        "migrations",
+        "add",
+        "${input:EFMigrationName}",
+        "--context",
+        "IdDbContext",
+        "--output-dir",
+        "Migrations",
+        "--startup-project",
+        "${workspaceFolder}/src/Kashmir.Captain.Web"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "EF Update Database - IdDbContext",
+      "type": "shell",
+      "command": "dotnet",
+      "options": {
+        "cwd": "${workspaceFolder}/src/Kashmir.Captain.Domain"
+      },
+      "args": [
+        "ef",
+        "database",
+        "update",
+        "--context",
+        "IdDbContext",
+        "--startup-project",
+        "${workspaceFolder}/src/Kashmir.Captain.Web"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/Kashmir.Captain.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/Kashmir.Captain.sln",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/Kashmir.Captain.sln"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "EFMigrationName",
+      "type": "promptString",
+      "description": "Enter the migration name",
+      "default": "NewMigration"
+    }
+  ]
 }
