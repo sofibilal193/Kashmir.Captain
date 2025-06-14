@@ -1,3 +1,4 @@
+using System.Reflection;
 using Kashmir.Captain.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
+);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

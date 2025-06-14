@@ -137,6 +137,6 @@ Visit [https://localhost:5001](https://localhost:5001)
 
 This project is licensed under the MIT License.
 
----
+---dotnet watch run --project src/Kashmir.Captain.Web
 
 > Created with ❤️ by Bilal Ahmad Sofi

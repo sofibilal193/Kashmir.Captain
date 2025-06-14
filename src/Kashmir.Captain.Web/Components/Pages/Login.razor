@@ -1,0 +1,60 @@
+@page "/login"
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations;
+@using Kashmir.Captain.Application.Auth
+@using Kashmir.Captain.Shared
+@inherits BaseComponent
+
+
+<h3 class="mb-4">Login</h3>
+
+<EditForm Model="@command" OnValidSubmit="HandleLogin">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="command.Email" />
+        <ValidationMessage For="@(() => command.Email)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <InputText type="password" class="form-control" @bind-Value="command.Password" />
+        <ValidationMessage For="@(() => command.Password)" />
+    </div>
+    
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="command.RememberMe" />
+        <label class="form-check-label">Remember Me</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger mt-3">@errorMessage</div>
+}
+
+@code {
+    private LoginUserCommand command = new();
+    private string? errorMessage;
+
+    private async Task HandleLogin()
+    {
+        var result = await Mediator.Send(command);
+
+        if (result.IsSuccess)
+        {
+            errorMessage = null;
+            Navigation.NavigateTo("/dashboard");
+        }
+        else
+        {
+            errorMessage = result.Message ?? "Invalid credentials. Try again.";
+        }
+    }
+}
+
