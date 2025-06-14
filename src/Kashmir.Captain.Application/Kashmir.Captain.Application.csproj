@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kashmir.Captain.Domain\Kashmir.Captain.Domain.csproj" />
+    <ProjectReference
+      Include="..\Kashmir.Captain.Infrastructure\Kashmir.Captain.Infrastructure.csproj" />
     <ProjectReference Include="..\Kashmir.Captain.Shared\Kashmir.Captain.Shared.csproj" />
   </ItemGroup>
 

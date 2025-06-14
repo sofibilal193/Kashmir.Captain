@@ -3,12 +3,23 @@ using Kashmir.Captain.Application;
 using Kashmir.Captain.Application.Behaviors;
 using MediatR;
 using Kashmir.Captain.Shared;
+using Kashmir.Captain.Infrastructure;
+using Kashmir.Captain.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 var appSettings = new AppSettings();
 configuration.Bind(appSettings);
+
+builder.Services.AddDbContext<IdDbContext>(options => options.UseSqlServer(appSettings.ConnectionStrings.IdDbContext
+           ?? throw new InvalidOperationException("Connection string 'IdDbContext' not found."),
+       sqlOptions => sqlOptions.MigrationsAssembly("Kashmir.Captain.Domain"))
+);
+
+
+builder.Services.AddScoped<IIdentityDbContext>(provider => provider.GetRequiredService<IdDbContext>());
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
