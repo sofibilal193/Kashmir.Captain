@@ -1,5 +1,7 @@
-using System.Reflection;
 using Kashmir.Captain.Web.Components;
+using Kashmir.Captain.Application;
+using Kashmir.Captain.Application.Behaviors;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
-);
+builder.Services.AddMediatR(config =>
+    config.RegisterServicesFromAssembly(typeof(ApplicationAssemblyMarker).Assembly));
+
+// add Mediatr
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(LoggingBehavior<,>).Assembly));
+
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+// builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TransactionBehavior<,>));
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

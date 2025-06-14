@@ -1,0 +1,85 @@
+@page "/register"
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+@using Kashmir.Captain.Application.Auth
+@using Kashmir.Captain.Shared
+@inherits BaseComponent
+
+<h3 class="mb-4">Register</h3>
+
+<EditForm Model="@command" OnValidSubmit="HandleRegister" FormName="RegisterForm">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <InputText class="form-control" @bind-Value="command.FirstName" />
+        <ValidationMessage For="@(() => command.FirstName)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <InputText class="form-control" @bind-Value="command.LastName" />
+        <ValidationMessage For="@(() => command.LastName)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Phone Number</label>
+        <InputText class="form-control" @bind-Value="command.PhoneNumber" />
+        <ValidationMessage For="@(() => command.PhoneNumber)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <InputText class="form-control" @bind-Value="command.Email" />
+        <ValidationMessage For="@(() => command.Email)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <InputText type="password" class="form-control" @bind-Value="command.Password" />
+        <ValidationMessage For="@(() => command.Password)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <InputText type="password" class="form-control" @bind-Value="command.ConfirmPassword" />
+        <ValidationMessage For="@(() => command.ConfirmPassword)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+    
+</EditForm>
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+    <div class="alert alert-success mt-3">@successMessage</div>
+}
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger mt-3">@errorMessage</div>
+}
+
+@code {
+    private RegisterUserCommand command = new();
+    private string? errorMessage;
+    private string? successMessage;
+
+    private async Task HandleRegister()
+    {
+        var result = await Mediator.Send(command);
+
+        if (result.IsSuccess)
+        {
+            successMessage = result.Message;
+            errorMessage = null;
+            Navigation.NavigateTo("/login");
+        }
+        else
+        {
+            errorMessage = result.Message;
+            successMessage = null;
+        }
+    }
+}

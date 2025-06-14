@@ -1,6 +1,6 @@
 @page "/login"
 @using Microsoft.AspNetCore.Components;
-@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Forms;
 @using System.ComponentModel.DataAnnotations;
 @using Kashmir.Captain.Application.Auth
 @using Kashmir.Captain.Shared
@@ -9,7 +9,7 @@
 
 <h3 class="mb-4">Login</h3>
 
-<EditForm Model="@command" OnValidSubmit="HandleLogin">
+<EditForm Model="@command" OnValidSubmit="HandleLogin" FormName="LoginForm">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
