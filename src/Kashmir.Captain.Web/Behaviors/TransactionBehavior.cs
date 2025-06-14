@@ -3,7 +3,7 @@
 // using Microsoft.EntityFrameworkCore;
 // using Microsoft.Extensions.DependencyInjection;
 // using Kashmir.Captain.Domain.Common;
-// using Kashmir.Captain.Common.Extensions;
+// using Kashmir.Captain.Shared.Extensions;
 
 // namespace Kashmir.Captain.Application.Behaviors
 // {

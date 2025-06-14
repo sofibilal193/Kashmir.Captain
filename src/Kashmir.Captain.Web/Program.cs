@@ -2,8 +2,13 @@ using Kashmir.Captain.Web.Components;
 using Kashmir.Captain.Application;
 using Kashmir.Captain.Application.Behaviors;
 using MediatR;
+using Kashmir.Captain.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+
+var appSettings = new AppSettings();
+configuration.Bind(appSettings);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -1,6 +1,3 @@
 ﻿namespace Kashmir.Captain.Domain;
 
-public class Class1
-{
-
-}
+public class DomainAssemblyMarker { }
